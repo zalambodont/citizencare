@@ -1,0 +1,12 @@
+.env
+.env.local
+.env.*.local
+.idea/
+.DS_Store
+coverage/
+node_modules/
+*.tsbuildinfo
+node_modules
+git push -u origin main/.DS_Store
+/.idea
+/dist

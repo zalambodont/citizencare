@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "CitizenCare",
+    "subtitle": "وزارة التنمية الاجتماعية",
+    "cardTitle": "طلب الدعم الاجتماعي",
+    "intro": "أكمل نموذج CitizenCare المكون من ثلاث خطوات لطلب الدعم المالي. يمكنك حفظ تقدمك في أي وقت والاستفادة من المساعد الذكي لصياغة أو تحسين وصف حالتك."
+  },
+  "steps": {
+    "personal": "المعلومات الشخصية",
+    "financial": "معلومات الأسرة والمالية",
+    "situation": "وصف الحالة"
+  },
+  "personalInfo": {
+    "name": "الاسم الكامل",
+    "nationalId": "رقم الهوية الوطنية",
+    "dateOfBirth": "تاريخ الميلاد",
+    "gender": "الجنس",
+    "address": "العنوان",
+    "city": "المدينة",
+    "state": "المحافظة",
+    "country": "الدولة",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني"
+  },
+  "gender": {
+    "male": "ذكر",
+    "female": "أنثى",
+    "other": "آخر"
+  },
+  "familyFinancial": {
+    "maritalStatus": "الحالة الاجتماعية",
+    "dependents": "عدد الأفراد المعالين",
+    "employmentStatus": "حالة التوظيف",
+    "monthlyIncome": "الدخل الشهري",
+    "housingStatus": "حالة السكن"
+  },
+  "maritalStatus": {
+    "single": "أعزب",
+    "married": "متزوج",
+    "divorced": "مطلق",
+    "widowed": "أرمل"
+  },
+  "employmentStatus": {
+    "employed": "موظف",
+    "unemployed": "عاطل عن العمل",
+    "selfEmployed": "أعمال حرة",
+    "retired": "متقاعد",
+    "student": "طالب"
+  },
+  "housingStatus": {
+    "owned": "ملك",
+    "rented": "مستأجر",
+    "family": "مع العائلة",
+    "homeless": "بلا مأوى"
+  },
+  "situation": {
+    "financialSituation": "صف وضعك المالي الحالي",
+    "financialSituationHelper": "يرجى تقديم تفاصيل حول ظروفك المالية",
+    "employmentCircumstances": "صف ظروف عملك",
+    "employmentCircumstancesHelper": "يرجى شرح حالة ووضع عملك الحالي",
+    "reasonForApplying": "لماذا تتقدم بطلب للحصول على الدعم الاجتماعي؟",
+    "reasonForApplyingHelper": "يرجى توضيح الأسباب التي تدعوك لطلب المساعدة",
+    "orGenerateWithAI": "إنشاء بالذكاء الاصطناعي"
+  },
+  "navigation": {
+    "next": "التالي",
+    "back": "السابق",
+    "submit": "إرسال الطلب",
+    "saveProgress": "حفظ التقدم",
+    "saving": "جاري الحفظ..."
+  },
+  "form": {
+    "welcomeTitle": "مرحباً بك في طلب الدعم الاجتماعي",
+    "welcomeMessage": "يرجى ملء هذا النموذج للتقدم بطلب الحصول على الدعم الاجتماعي. جميع المعلومات ستبقى سرية وتستخدم فقط لمعالجة طلبك."
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "email": "يرجى إدخال بريد إلكتروني صحيح",
+    "phone": "يرجى إدخال رقم هاتف صحيح",
+    "positiveNumber": "يرجى إدخال رقم موجب",
+    "minLength": "الحد الأدنى {{min}} حرفاً"
+  },
+  "messages": {
+    "progressSaved": "تم حفظ تقدمك بنجاح",
+    "applicationSubmitted": "تم إرسال الطلب بنجاح! الرقم المرجعي:",
+    "submissionError": "حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.",
+    "aiGenerating": "جاري إنشاء الاقتراح...",
+    "aiError": "فشل في إنشاء الاقتراح. يرجى المحاولة مرة أخرى."
+  },
+  "aiDialog": {
+    "title": "اقتراح تم إنشاؤه بالذكاء الاصطناعي",
+    "accept": "استخدم هذا النص",
+    "discard": "تجاهل",
+    "editHint": "راجع النص أدناه وقم بأي تعديلات تعكس ظروفك قبل الاعتماد.",
+    "refresh": "إنشاء نسخة أخرى"
+  }
+}
