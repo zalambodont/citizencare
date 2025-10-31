@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "CitizenCare",
+    "subtitle": "Ministry of Social Development",
+    "cardTitle": "Social Support Application",
+    "intro": "Complete the three-step CitizenCare form to request financial support. You can save your progress at any time and use the AI assistant to polish your situation descriptions."
+  },
+  "steps": {
+    "personal": "Personal Information",
+    "financial": "Family & Financial Info",
+    "situation": "Situation Descriptions"
+  },
+  "personalInfo": {
+    "name": "Full Name",
+    "nationalId": "National ID",
+    "dateOfBirth": "Date of Birth",
+    "gender": "Gender",
+    "address": "Address",
+    "city": "City",
+    "state": "State/Province",
+    "country": "Country",
+    "phone": "Phone Number",
+    "email": "Email Address"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+  "familyFinancial": {
+    "maritalStatus": "Marital Status",
+    "dependents": "Number of Dependents",
+    "employmentStatus": "Employment Status",
+    "monthlyIncome": "Monthly Income",
+    "housingStatus": "Housing Status"
+  },
+  "maritalStatus": {
+    "single": "Single",
+    "married": "Married",
+    "divorced": "Divorced",
+    "widowed": "Widowed"
+  },
+  "employmentStatus": {
+    "employed": "Employed",
+    "unemployed": "Unemployed",
+    "selfEmployed": "Self Employed",
+    "retired": "Retired",
+    "student": "Student"
+  },
+  "housingStatus": {
+    "owned": "Owned",
+    "rented": "Rented",
+    "family": "Living with Family",
+    "homeless": "Homeless"
+  },
+  "situation": {
+    "financialSituation": "Describe your current financial situation",
+    "financialSituationHelper": "Please provide details about your financial circumstances",
+    "employmentCircumstances": "Describe your employment circumstances",
+    "employmentCircumstancesHelper": "Please explain your current employment status and history",
+    "reasonForApplying": "Why are you applying for social support?",
+    "reasonForApplyingHelper": "Please explain the reasons you are seeking assistance",
+    "orGenerateWithAI": "Generate with AI"
+  },
+  "navigation": {
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit Application",
+    "saveProgress": "Save Progress",
+    "saving": "Saving..."
+  },
+  "form": {
+    "welcomeTitle": "Welcome to the Social Support Application",
+    "welcomeMessage": "Please fill out this form to apply for social support. All information will be kept confidential and used solely for processing your application."
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number",
+    "positiveNumber": "Please enter a positive number",
+    "minLength": "Minimum {{min}} characters required"
+  },
+  "messages": {
+    "progressSaved": "Your progress has been saved",
+    "applicationSubmitted": "Application submitted successfully! Reference number:",
+    "submissionError": "An error occurred while submitting the application. Please try again.",
+    "aiGenerating": "Generating suggestion...",
+    "aiError": "Failed to generate suggestion. Please try again."
+  },
+  "aiDialog": {
+    "title": "AI Generated Suggestion",
+    "accept": "Use This Text",
+    "discard": "Discard",
+    "editHint": "Review the text below and make any changes that reflect your circumstances before accepting.",
+    "refresh": "Generate another version"
+  }
+}
