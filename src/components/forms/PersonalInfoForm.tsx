@@ -9,6 +9,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { countries as countryOptions } from '../../data/locations';
 import { PhoneInput } from '../inputs/PhoneInput';
+import { validatePhoneNumber } from '../../utils/phoneValidation';
 
 export const PersonalInfoForm: React.FC = () => {
   const { t } = useTranslation();
@@ -301,10 +302,10 @@ export const PersonalInfoForm: React.FC = () => {
               validate: value => {
                 if (!value) return 'validation.required';
 
-                const digitsOnly = value.replace(/\D/g, '');
+                const validation = validatePhoneNumber(value, selectedCountry?.phoneValidation);
 
-                if (digitsOnly.length < 10 || digitsOnly.length > 15) {
-                  return 'validation.phone';
+                if (!validation.isValid) {
+                  return validation.error || 'validation.phone';
                 }
 
                 return true;
@@ -314,7 +315,10 @@ export const PersonalInfoForm: React.FC = () => {
               <PhoneInput
                 label={t('personalInfo.phone')}
                 value={field.value ?? ''}
-                onChange={field.onChange}
+                onChange={(value) => {
+                  field.onChange(value);
+                  setTimeout(() => trigger('phone'), 0);
+                }}
                 onBlur={field.onBlur}
                 error={!!errors.phone}
                 helperText={translateError(errors.phone)}

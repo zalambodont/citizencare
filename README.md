@@ -12,6 +12,39 @@ This project implements CitizenCare, a three-step application wizard for a gover
 - Location cascading dropdowns (Country → State → City) with proper data restoration.
 - Accessible by default MUI components, keyboard-friendly navigation, and ARIA-conscious dialogs.
 
+
+## Form Flow
+
+```mermaid
+graph LR
+    A[Start] --> B[Step 1: Personal Info]
+    B -->|Next| C[Step 2: Financial Info]
+    C -->|Back| B
+    C -->|Next| D[Step 3: Situation]
+    D -->|Back| C
+    D -.->|Jump to| B
+    C -.->|Jump to| B
+    D -->|AI Assist| E[Generate Suggestion]
+    E --> D
+    D -->|Submit| F[Success]
+```
+
+
+## How It Works
+
+The form walks users through three steps. Your progress saves automatically as you type, so you can close the browser and come back later.
+
+**Step 1: Personal Info**
+Basic stuff like name, national ID, birth date, and contact details. Phone validation adapts to your selected country, so it knows what's valid for a US number versus a UAE number.
+
+**Step 2: Family & Financial**
+Marital status, number of dependents, employment situation, monthly income, and housing status. Pretty straightforward dropdowns and number inputs.
+
+**Step 3: Situation Descriptions**
+This is where you explain your financial situation, employment circumstances, and why you're applying. Each field has a "Generate with AI" button if you want help writing it. The AI looks at your info from step 2 to make the suggestion more relevant. You can edit what it gives you, and if you don't like it, just hit the refresh button to try again with your edits as context.
+
+If something goes wrong (invalid API key, network timeout, etc.), you'll see a clear error message instead of the app crashing. Error boundaries catch any unexpected issues so the whole form doesn't break if one part has a problem.
+
 ## Prerequisites
 - **Node.js 22.20.0** recommended (use `nvm use 22.20.0` if you have nvm installed).
 - Note: Vite 7 requires Node.js 20.19+ or 22.12+. You may see a version warning if using an older version, but the app will still function.

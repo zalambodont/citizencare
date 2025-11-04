@@ -78,6 +78,18 @@ const buildMessages = (request: AIRequest) => {
 };
 
 const handleError = async (response: Response): Promise<never> => {
+  if (response.status === 401) {
+    throw new Error('Invalid API key. Please check your OpenAI API key configuration.');
+  }
+
+  if (response.status === 429) {
+    throw new Error('Rate limit exceeded. Please wait a moment before trying again.');
+  }
+
+  if (response.status === 500 || response.status === 502 || response.status === 503) {
+    throw new Error('OpenAI service is temporarily unavailable. Please try again later.');
+  }
+
   let detail = response.statusText;
 
   try {

@@ -7,6 +7,7 @@ import { FormProvider } from './contexts/FormContext';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { createAppTheme } from './theme';
 import { getEmotionCache } from './theme/createEmotionCache';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import './i18n/config';
 
 const ThemedApp: React.FC = () => {
@@ -26,10 +27,16 @@ const ThemedApp: React.FC = () => {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <LanguageProvider>
-      <FormProvider>
-        <ThemedApp />
-      </FormProvider>
-    </LanguageProvider>
+    <ErrorBoundary>
+      <LanguageProvider>
+        <ErrorBoundary>
+          <FormProvider>
+            <ErrorBoundary>
+              <ThemedApp />
+            </ErrorBoundary>
+          </FormProvider>
+        </ErrorBoundary>
+      </LanguageProvider>
+    </ErrorBoundary>
   </React.StrictMode>
 );

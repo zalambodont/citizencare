@@ -8,7 +8,7 @@ jest.mock('react-i18next', () => ({
 }));
 
 describe('AISuggestionDialog', () => {
-  it('calls onRefresh when the refresh button is pressed', () => {
+  it('calls onRefresh with edited text when the refresh button is pressed', () => {
     const onAccept = jest.fn();
     const onDiscard = jest.fn();
     const onRefresh = jest.fn();
@@ -29,5 +29,6 @@ describe('AISuggestionDialog', () => {
     fireEvent.click(refreshButton);
 
     expect(onRefresh).toHaveBeenCalledTimes(1);
+    expect(onRefresh).toHaveBeenCalledWith('Sample suggestion');
   });
 });

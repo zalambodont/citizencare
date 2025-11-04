@@ -7,6 +7,7 @@ import { PersonalInfoForm } from './components/forms/PersonalInfoForm';
 import { FamilyFinancialForm } from './components/forms/FamilyFinancialForm';
 import { SituationDescriptionsForm } from './components/forms/SituationDescriptionsForm';
 import { HeaderBar } from './components/layout/HeaderBar';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -15,13 +16,29 @@ const App: React.FC = () => {
   const renderForm = () => {
     switch (currentStep) {
       case 'personal':
-        return <PersonalInfoForm />;
+        return (
+          <ErrorBoundary>
+            <PersonalInfoForm />
+          </ErrorBoundary>
+        );
       case 'financial':
-        return <FamilyFinancialForm />;
+        return (
+          <ErrorBoundary>
+            <FamilyFinancialForm />
+          </ErrorBoundary>
+        );
       case 'situation':
-        return <SituationDescriptionsForm />;
+        return (
+          <ErrorBoundary>
+            <SituationDescriptionsForm />
+          </ErrorBoundary>
+        );
       default:
-        return <PersonalInfoForm />;
+        return (
+          <ErrorBoundary>
+            <PersonalInfoForm />
+          </ErrorBoundary>
+        );
     }
   };
 

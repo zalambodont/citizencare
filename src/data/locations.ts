@@ -3,6 +3,10 @@ export interface CountryDefinition {
   name: string;
   callingCode: string;
   phoneFormat: string;
+  phoneValidation: {
+    requiredLength: number;
+    requiredPrefix: string;
+  };
   currency: string;
   states: StateDefinition[];
 }
@@ -17,7 +21,11 @@ export const countries: CountryDefinition[] = [
     code: 'US',
     name: 'United States',
     callingCode: '+1',
-    phoneFormat: '(555) 123-4567',
+    phoneFormat: '555 123 4567',
+    phoneValidation: {
+      requiredLength: 11,
+      requiredPrefix: '1',
+    },
     currency: 'USD',
     states: [
       { name: 'California', cities: ['Los Angeles', 'San Francisco', 'San Diego', 'San Jose'] },
@@ -39,7 +47,11 @@ export const countries: CountryDefinition[] = [
     code: 'CA',
     name: 'Canada',
     callingCode: '+1',
-    phoneFormat: '(555) 123-4567',
+    phoneFormat: '555 123 4567',
+    phoneValidation: {
+      requiredLength: 11,
+      requiredPrefix: '1',
+    },
     currency: 'USD',
     states: [
       { name: 'Ontario', cities: ['Toronto', 'Ottawa', 'Hamilton', 'London'] },
@@ -59,6 +71,10 @@ export const countries: CountryDefinition[] = [
     name: 'United Arab Emirates',
     callingCode: '+971',
     phoneFormat: '50 123 4567',
+    phoneValidation: {
+      requiredLength: 12,
+      requiredPrefix: '971',
+    },
     currency: 'AED',
     states: [
       { name: 'Abu Dhabi', cities: ['Abu Dhabi', 'Al Ain', 'Madinat Zayed', 'Al Dhafra'] },
@@ -75,6 +91,10 @@ export const countries: CountryDefinition[] = [
     name: 'Saudi Arabia',
     callingCode: '+966',
     phoneFormat: '50 123 4567',
+    phoneValidation: {
+      requiredLength: 12,
+      requiredPrefix: '966',
+    },
     currency: 'USD',
     states: [
       { name: 'Riyadh Province', cities: ['Riyadh', 'Al Kharj', 'Al Majmaah', 'Diriyah'] },
@@ -94,6 +114,10 @@ export const countries: CountryDefinition[] = [
     name: 'Turkey',
     callingCode: '+90',
     phoneFormat: '555 123 45 67',
+    phoneValidation: {
+      requiredLength: 12,
+      requiredPrefix: '90',
+    },
     currency: 'USD',
     states: [
       { name: 'Istanbul Province', cities: ['Istanbul', 'Besiktas', 'Kadikoy', 'Uskudar'] },

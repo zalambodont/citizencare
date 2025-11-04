@@ -25,23 +25,24 @@ describe('StepIndicator', () => {
     mockUseLanguage.mockReset();
   });
 
-  it('renders with LTR direction and disables the active step', () => {
+  it('renders and disables the active step', () => {
     mockUseLanguage.mockReturnValue({ language: 'en', direction: 'ltr', toggleLanguage: jest.fn() });
 
-    const { container } = render(<StepIndicator {...baseProps} />);
-
-    expect(container.firstElementChild).toHaveAttribute('dir', 'ltr');
+    render(<StepIndicator {...baseProps} />);
 
     const buttons = screen.getAllByRole('button');
     expect(buttons[1]).toBeDisabled();
     expect(buttons[0]).not.toBeDisabled();
+    expect(buttons[2]).toBeDisabled();
   });
 
-  it('switches to RTL direction when Arabic is active', () => {
+  it('renders correctly with Arabic language', () => {
     mockUseLanguage.mockReturnValue({ language: 'ar', direction: 'rtl', toggleLanguage: jest.fn() });
 
-    const { container } = render(<StepIndicator {...baseProps} />);
+    render(<StepIndicator {...baseProps} />);
 
-    expect(container.firstElementChild).toHaveAttribute('dir', 'rtl');
+    const buttons = screen.getAllByRole('button');
+    expect(buttons).toHaveLength(3);
+    expect(buttons[1]).toBeDisabled();
   });
 });

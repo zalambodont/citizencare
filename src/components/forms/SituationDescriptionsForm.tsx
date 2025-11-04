@@ -77,7 +77,7 @@ export const SituationDescriptionsForm: React.FC = () => {
     };
   }, [watch, getValues, saveProgress]);
 
-  const handleAIAssist = async (fieldName: FieldName) => {
+  const handleAIAssist = async (fieldName: FieldName, customContext?: string) => {
     setCurrentField(fieldName);
     setDialogOpen(true);
     setAiLoading(true);
@@ -85,7 +85,7 @@ export const SituationDescriptionsForm: React.FC = () => {
     setAiSuggestion('');
 
     try {
-      const currentValue = watch(fieldName);
+      const currentValue = customContext !== undefined ? customContext : watch(fieldName);
       setAttemptCounters(prev => ({ ...prev, [fieldName]: prev[fieldName] + 1 }));
       const response = await generateAISuggestion({
         fieldName,
@@ -121,12 +121,12 @@ export const SituationDescriptionsForm: React.FC = () => {
     }
   };
 
-  const handleRefreshSuggestion = () => {
+  const handleRefreshSuggestion = (editedContext: string) => {
     if (!currentField) {
       return;
     }
 
-    handleAIAssist(currentField);
+    handleAIAssist(currentField, editedContext);
   };
 
   const onSubmit = async (data: SituationDescriptions) => {

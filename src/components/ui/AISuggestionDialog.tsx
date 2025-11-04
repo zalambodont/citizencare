@@ -22,7 +22,7 @@ interface AISuggestionDialogProps {
   error: string | null;
   onAccept: (text: string) => void;
   onDiscard: () => void;
-  onRefresh: () => void;
+  onRefresh: (editedContext: string) => void;
 }
 
 export const AISuggestionDialog: React.FC<AISuggestionDialogProps> = ({
@@ -67,7 +67,7 @@ export const AISuggestionDialog: React.FC<AISuggestionDialogProps> = ({
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Tooltip title={t('aiDialog.refresh')}>
                 <span>
-                  <IconButton onClick={onRefresh} disabled={loading} aria-label={t('aiDialog.refresh')}>
+                  <IconButton onClick={() => onRefresh(editedText)} disabled={loading} aria-label={t('aiDialog.refresh')}>
                     <RefreshIcon />
                   </IconButton>
                 </span>

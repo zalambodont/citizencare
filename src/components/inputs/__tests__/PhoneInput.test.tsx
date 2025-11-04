@@ -10,7 +10,7 @@ describe('PhoneInput', () => {
     render(
       <PhoneInput
         label="Phone"
-        value="+971 "
+        value="+971"
         onChange={handleChange}
         onBlur={handleBlur}
         countryCallingCode="+971"
@@ -21,6 +21,6 @@ describe('PhoneInput', () => {
 
     fireEvent.change(input, { target: { value: '0-5@0 123 4567' } });
 
-    expect(handleChange).toHaveBeenCalledWith('+971 0501234567');
+    expect(handleChange).toHaveBeenCalledWith('+9710501234567');
   });
 });
