@@ -29,13 +29,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
       <LanguageProvider>
-        <ErrorBoundary>
-          <FormProvider>
-            <ErrorBoundary>
-              <ThemedApp />
-            </ErrorBoundary>
-          </FormProvider>
-        </ErrorBoundary>
+        <FormProvider>
+          <ThemedApp />
+        </FormProvider>
       </LanguageProvider>
     </ErrorBoundary>
   </React.StrictMode>

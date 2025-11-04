@@ -25,7 +25,7 @@ describe('AISuggestionDialog', () => {
       />
     );
 
-    const refreshButton = screen.getByRole('button', { name: 'aiDialog.refresh' });
+    const refreshButton = screen.getByRole('button', { name: 'aiDialog.regenerate' });
     fireEvent.click(refreshButton);
 
     expect(onRefresh).toHaveBeenCalledTimes(1);

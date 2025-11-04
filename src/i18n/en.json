@@ -99,6 +99,7 @@
     "accept": "Use This Text",
     "discard": "Discard",
     "editHint": "Review the text below and make any changes that reflect your circumstances before accepting.",
-    "refresh": "Generate another version"
+    "refresh": "Generate another version",
+    "regenerate": "Regenerate"
   }
 }

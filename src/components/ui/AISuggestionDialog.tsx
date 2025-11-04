@@ -9,8 +9,6 @@ import {
   Alert,
   TextField,
   Box,
-  IconButton,
-  Tooltip,
 } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { useTranslation } from 'react-i18next';
@@ -36,10 +34,17 @@ export const AISuggestionDialog: React.FC<AISuggestionDialogProps> = ({
 }) => {
   const { t } = useTranslation();
   const [editedText, setEditedText] = React.useState(suggestion);
+  const [hasBeenEdited, setHasBeenEdited] = React.useState(false);
 
   React.useEffect(() => {
     setEditedText(suggestion);
+    setHasBeenEdited(false);
   }, [suggestion]);
+
+  const handleTextChange = (newText: string) => {
+    setEditedText(newText);
+    setHasBeenEdited(newText !== suggestion);
+  };
 
   const handleAccept = () => {
     onAccept(editedText);
@@ -65,20 +70,27 @@ export const AISuggestionDialog: React.FC<AISuggestionDialogProps> = ({
               {t('aiDialog.editHint')}
             </Alert>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Tooltip title={t('aiDialog.refresh')}>
-                <span>
-                  <IconButton onClick={() => onRefresh(editedText)} disabled={loading} aria-label={t('aiDialog.refresh')}>
-                    <RefreshIcon />
-                  </IconButton>
-                </span>
-              </Tooltip>
+              <Button
+                startIcon={<RefreshIcon />}
+                onClick={() => onRefresh(editedText)}
+                variant="text"
+                size="small"
+                sx={{
+                  color: hasBeenEdited ? 'primary.main' : 'text.disabled',
+                  '&:hover': {
+                    backgroundColor: hasBeenEdited ? 'action.hover' : 'transparent',
+                  },
+                }}
+              >
+                {t('aiDialog.regenerate')}
+              </Button>
             </Box>
             <TextField
               multiline
               rows={8}
               fullWidth
               value={editedText}
-              onChange={(e) => setEditedText(e.target.value)}
+              onChange={(e) => handleTextChange(e.target.value)}
               variant="outlined"
             />
           </Box>
