@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, TextField, MenuItem, Box, Button, Snackbar, Alert, InputAdornment } from '@mui/material';
+import { TextField, MenuItem, Box, Button, Snackbar, Alert, InputAdornment } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../../contexts/FormContext';
@@ -75,7 +76,7 @@ export const FamilyFinancialForm: React.FC = () => {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="maritalStatus"
             control={control}
@@ -90,7 +91,7 @@ export const FamilyFinancialForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="dependents"
             control={control}
@@ -112,12 +113,12 @@ export const FamilyFinancialForm: React.FC = () => {
                 error={!!errors.dependents}
                 helperText={errors.dependents?.message}
                 required
-                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                slotProps={{ htmlInput: { inputMode: 'numeric', pattern: '[0-9]*' } }}
               />
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="employmentStatus"
             control={control}
@@ -133,7 +134,7 @@ export const FamilyFinancialForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="monthlyIncome"
             control={control}
@@ -154,7 +155,7 @@ export const FamilyFinancialForm: React.FC = () => {
                 error={!!errors.monthlyIncome}
                 helperText={errors.monthlyIncome?.message}
                 required
-                inputProps={{ inputMode: 'decimal', pattern: '[0-9]*\\.?[0-9]*' }}
+                slotProps={{ htmlInput: { inputMode: 'decimal', pattern: '[0-9]*\\.?[0-9]*' } }}
                 InputProps={{
                   endAdornment: <InputAdornment position="end">{currency}</InputAdornment>,
                 }}
@@ -162,7 +163,7 @@ export const FamilyFinancialForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="housingStatus"
             control={control}
@@ -177,7 +178,7 @@ export const FamilyFinancialForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, flexWrap: 'wrap' }}>
             <Button onClick={previousStep} {...(isRTL ? { endIcon: <ArrowForwardIcon /> } : { startIcon: <ArrowBackIcon /> })} size="large">{t('navigation.back')}</Button>
             <Button type="submit" variant="contained" {...(isRTL ? { startIcon: <ArrowBackIcon /> } : { endIcon: <ArrowForwardIcon /> })} size="large">{t('navigation.next')}</Button>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, TextField, MenuItem, Box, Button, Snackbar, Alert } from '@mui/material';
+import { TextField, MenuItem, Box, Button, Snackbar, Alert } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { useForm, Controller, FieldError } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../../contexts/FormContext';
@@ -160,7 +161,7 @@ export const PersonalInfoForm: React.FC = () => {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="name"
             control={control}
@@ -170,7 +171,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Controller
             name="nationalId"
             control={control}
@@ -180,7 +181,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Controller
             name="dateOfBirth"
             control={control}
@@ -198,7 +199,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="gender"
             control={control}
@@ -212,7 +213,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="country"
             control={control}
@@ -235,7 +236,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Controller
             name="state"
             control={control}
@@ -259,7 +260,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Controller
             name="city"
             control={control}
@@ -283,7 +284,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Controller
             name="address"
             control={control}
@@ -293,7 +294,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Controller
             name="phone"
             control={control}
@@ -328,7 +329,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Controller
             name="email"
             control={control}
@@ -338,7 +339,7 @@ export const PersonalInfoForm: React.FC = () => {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, flexWrap: 'wrap' }}>
             <Button type="submit" variant="contained" {...(isRTL ? { startIcon: <ArrowBackIcon /> } : { endIcon: <ArrowForwardIcon /> })} size="large">
               {t('navigation.next')}

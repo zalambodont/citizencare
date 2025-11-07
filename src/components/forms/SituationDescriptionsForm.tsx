@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Grid, TextField, Box, Button, Alert, Snackbar } from '@mui/material';
+import { TextField, Box, Button, Alert, Snackbar } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../../contexts/FormContext';
@@ -137,7 +138,9 @@ export const SituationDescriptionsForm: React.FC = () => {
       setSnackbar({ open: true, message: `${t('messages.applicationSubmitted')} ${result.id}`, severity: 'success' });
       setTimeout(() => clearForm(), 2000);
     } catch (error) {
-      setSnackbar({ open: true, message: t('messages.submissionError'), severity: 'error' });
+      console.error('Submission error:', error);
+      const errorMessage = error instanceof Error ? error.message : t('messages.submissionError');
+      setSnackbar({ open: true, message: errorMessage, severity: 'error' });
     }
   };
 
@@ -145,14 +148,14 @@ export const SituationDescriptionsForm: React.FC = () => {
     <>
       <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Controller
               name="financialSituation"
               control={control}
               rules={{ required: t('validation.required'), minLength: { value: 20, message: t('validation.minLength', { min: 20 }) } }}
               render={({ field }) => (
                 <Box>
-                  <TextField {...field} multiline rows={4} label={t('situation.financialSituation')} error={!!errors.financialSituation} required FormHelperTextProps={{ component: 'div' }} helperText={
+                  <TextField {...field} multiline rows={4} label={t('situation.financialSituation')} error={!!errors.financialSituation} required slotProps={{ formHelperText: { component: 'div' } }} helperText={
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
                       <span>{errors.financialSituation?.message || t('situation.financialSituationHelper')}</span>
                       <Button variant="text" size="small" {...(isRTL ? { endIcon: <AutoAwesomeIcon sx={{ fontSize: '16px !important' }} /> } : { startIcon: <AutoAwesomeIcon sx={{ fontSize: '16px !important' }} /> })} onClick={() => handleAIAssist('financialSituation')} sx={{ minHeight: 'auto', padding: '2px 8px', fontSize: '0.75rem', textTransform: 'none' }}>{t('situation.orGenerateWithAI')}</Button>
@@ -162,14 +165,14 @@ export const SituationDescriptionsForm: React.FC = () => {
               )}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Controller
               name="employmentCircumstances"
               control={control}
               rules={{ required: t('validation.required'), minLength: { value: 20, message: t('validation.minLength', { min: 20 }) } }}
               render={({ field }) => (
                 <Box>
-                  <TextField {...field} multiline rows={4} label={t('situation.employmentCircumstances')} error={!!errors.employmentCircumstances} required FormHelperTextProps={{ component: 'div' }} helperText={
+                  <TextField {...field} multiline rows={4} label={t('situation.employmentCircumstances')} error={!!errors.employmentCircumstances} required slotProps={{ formHelperText: { component: 'div' } }} helperText={
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
                       <span>{errors.employmentCircumstances?.message || t('situation.employmentCircumstancesHelper')}</span>
                       <Button variant="text" size="small" {...(isRTL ? { endIcon: <AutoAwesomeIcon sx={{ fontSize: '16px !important' }} /> } : { startIcon: <AutoAwesomeIcon sx={{ fontSize: '16px !important' }} /> })} onClick={() => handleAIAssist('employmentCircumstances')} sx={{ minHeight: 'auto', padding: '2px 8px', fontSize: '0.75rem', textTransform: 'none' }}>{t('situation.orGenerateWithAI')}</Button>
@@ -179,14 +182,14 @@ export const SituationDescriptionsForm: React.FC = () => {
               )}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Controller
               name="reasonForApplying"
               control={control}
               rules={{ required: t('validation.required'), minLength: { value: 20, message: t('validation.minLength', { min: 20 }) } }}
               render={({ field }) => (
                 <Box>
-                  <TextField {...field} multiline rows={4} label={t('situation.reasonForApplying')} error={!!errors.reasonForApplying} required FormHelperTextProps={{ component: 'div' }} helperText={
+                  <TextField {...field} multiline rows={4} label={t('situation.reasonForApplying')} error={!!errors.reasonForApplying} required slotProps={{ formHelperText: { component: 'div' } }} helperText={
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
                       <span>{errors.reasonForApplying?.message || t('situation.reasonForApplyingHelper')}</span>
                       <Button variant="text" size="small" {...(isRTL ? { endIcon: <AutoAwesomeIcon sx={{ fontSize: '16px !important' }} /> } : { startIcon: <AutoAwesomeIcon sx={{ fontSize: '16px !important' }} /> })} onClick={() => handleAIAssist('reasonForApplying')} sx={{ minHeight: 'auto', padding: '2px 8px', fontSize: '0.75rem', textTransform: 'none' }}>{t('situation.orGenerateWithAI')}</Button>
@@ -196,7 +199,7 @@ export const SituationDescriptionsForm: React.FC = () => {
               )}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, flexWrap: 'wrap' }}>
               <Button onClick={previousStep} {...(isRTL ? { endIcon: <ArrowForwardIcon /> } : { startIcon: <ArrowBackIcon /> })} size="large" disabled={isSubmitting}>{t('navigation.back')}</Button>
               <Button type="submit" variant="contained" {...(isRTL ? { startIcon: <SendIcon /> } : { endIcon: <SendIcon /> })} size="large" disabled={isSubmitting}>{t('navigation.submit')}</Button>
