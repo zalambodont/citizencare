@@ -17,7 +17,10 @@ export const PersonalInfoForm: React.FC = () => {
   const { direction, language } = useLanguage();
   const { formData, updatePersonalInfo, nextStep, saveProgress, registerSaveHandler, unregisterSaveHandler } = useFormContext();
   const isRTL = direction === 'rtl';
+  const [error] = React.useState(false);
 
+  if (error) throw new Error('Runtime error test - ErrorBoundary should catch this');
+  
   const {
     control,
     watch,
